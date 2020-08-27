@@ -2,20 +2,26 @@ package com.guiferrini.apizup.domain;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+//p informar q User corresponde uma coleção no MongoDB
+@Document(collection="user")
+public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	//atributos basicos
+	@Id //p MongoDB
 	private String id;
 	private String name;
 	private String email;
 	
 	//Construtores
-	public Usuario() {
+	public User() {
 	}
 
 	//Contrutor q recebe atributos como parametro
-	public Usuario(String id, String name, String email) {
+	public User(String id, String name, String email) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -63,7 +69,7 @@ public class Usuario implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		User other = (User) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
