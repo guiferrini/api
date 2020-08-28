@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,11 +22,18 @@ public class UserResource {
 	@Autowired
 	private UserServices service;
 	
-	@RequestMapping(method=RequestMethod.GET)
 	//método que retorna uma lista de usuario
+	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<UserDTO>> findAll() {
 		List<User> list = service.findAll(); //busca no BD os usuarios, guarda na lista
 		List<UserDTO> listDTO = list.stream().map(obj -> new UserDTO(obj)).collect(Collectors.toList()); // convertendo objeto da list para um DTO(UserDTO)
 		return ResponseEntity.ok().body(listDTO); //retorna a lista na resposta da requisição	
+	}
+	
+	//método p retornar User por ID
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public ResponseEntity<UserDTO> findByID(@PathVariable String id) {
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(new UserDTO(obj)); //retorna objeto convertido p UserDTO	
 	}
 }
