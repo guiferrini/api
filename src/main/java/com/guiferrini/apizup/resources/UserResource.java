@@ -35,7 +35,7 @@ public class UserResource {
 	
 	//método p retornar User por ID
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<UserDTO> findByID(@PathVariable String id) {
+	public ResponseEntity<UserDTO> findByID(@PathVariable String id) { 
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(new UserDTO(obj)); //retorna objeto convertido p UserDTO	
 	}
@@ -49,4 +49,12 @@ public class UserResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
+	//método p apagar User por ID
+		@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+		public ResponseEntity<UserDTO> delete(@PathVariable String id) {
+			service.delete(id);
+			return ResponseEntity.noContent().build(); //retorna cod 204	
+		}
+		
 }

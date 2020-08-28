@@ -34,6 +34,12 @@ public class UserServices {
 		return repo.insert(obj);
 	}
 	
+	//Apagando USer
+	public void delete(String id) {
+		findById(id);
+		repo.deleteById(id);
+	}
+	
 	//é um DTO q instancia um USER, o inverso da class DTO
 	//p instanciar um User eu posso querer acessar o BD, por isso criado aqui, já tem dep do BD - manutanção no futuro acessando dados
 	public User fromDTO(UserDTO objDTO) {
