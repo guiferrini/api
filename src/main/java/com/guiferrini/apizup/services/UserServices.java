@@ -40,6 +40,20 @@ public class UserServices {
 		repo.deleteById(id);
 	}
 	
+	//Atualizando User
+	public User update(User obj) { //dados do User enviados na Requisição, n tem ligação ainda com BD
+		//p atualizar, busco objeto original no BD (por ID)- altero com os dados enviados (requisição)- e ai salva on BD
+		User newObj = findById(obj.getId()); 
+		updateData(newObj, obj); 
+		return repo.save(newObj); 
+	}
+	
+	//logica do update
+	private void updateData(User newObj, User obj) {
+		newObj.setName(obj.getName());
+		newObj.setEmail(obj.getEmail());
+	}
+
 	//é um DTO q instancia um USER, o inverso da class DTO
 	//p instanciar um User eu posso querer acessar o BD, por isso criado aqui, já tem dep do BD - manutanção no futuro acessando dados
 	public User fromDTO(UserDTO objDTO) {
