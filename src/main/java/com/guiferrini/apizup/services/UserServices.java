@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.guiferrini.apizup.domain.User;
+import com.guiferrini.apizup.dto.UserDTO;
 import com.guiferrini.apizup.repository.UserRepository;
 import com.guiferrini.apizup.services.exception.ObjectNotFoundException;
 
@@ -27,4 +28,16 @@ public class UserServices {
 		Optional<User> obj = repo.findById(id); //se n encontra User retorna vazio(null), entao: msg 'n encontrado'
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
 	}
+	
+	//Criando User
+	public User insert(User obj) {
+		return repo.insert(obj);
+	}
+	
+	//é um DTO q instancia um USER, o inverso da class DTO
+	//p instanciar um User eu posso querer acessar o BD, por isso criado aqui, já tem dep do BD - manutanção no futuro acessando dados
+	public User fromDTO(UserDTO objDTO) {
+		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail()); 
+	}
+	
 }
