@@ -1,5 +1,6 @@
 package com.guiferrini.apizup.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +22,9 @@ public class FileServices {
 		Optional<File> obj = repo.findById(id); //se n encontra File retorna vazio(null), entao: msg 'n encontrado'
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Arquivo não encontrado"));
 	}	
+	
+	//busca File por Title
+	public List<File> findByTitle(String text) {
+		return repo.findByTitleContainingIgnoreCase(text);
+	}
 }
