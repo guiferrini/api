@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.guiferrini.apizup.domain.File;
 import com.guiferrini.apizup.domain.User;
 import com.guiferrini.apizup.dto.UserDTO;
 import com.guiferrini.apizup.services.UserServices;
@@ -64,6 +65,13 @@ public class UserResource {
 		obj.setId(id); //garantir q meu obj vai ter ID da requisição
 		obj = service.update(obj); // faz atualização
 	    return ResponseEntity.noContent().build(); //retorna cod 204
+	}
+	
+	//método p retornar Files de um User
+	@RequestMapping(value="/{id}/files", method=RequestMethod.GET)
+	public ResponseEntity<List<File>> findFiles(@PathVariable String id) { //variavél id como parametro
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(obj.getFiles()); //retorna objeto convertido p UserDTO	
 	}
 		
 }
