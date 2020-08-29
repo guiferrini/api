@@ -58,5 +58,11 @@ public class Instantiation implements CommandLineRunner { //carga inicial do BD
 				);
 
 		fileRepository.saveAll(Arrays.asList(file1, file2)); //salvando os objetos na coleção File
+		
+		zup.getFiles().addAll(Arrays.asList(file1)); //Adicionando User a seus Files
+		userRepository.save(zup); //salvando com a referencia
+		
+		guilherme.getFiles().addAll(Arrays.asList(file2));
+		userRepository.save(guilherme);
 	}
 }

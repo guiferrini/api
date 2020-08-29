@@ -1,8 +1,11 @@
 package com.guiferrini.apizup.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //p informar q User corresponde uma coleção no MongoDB
@@ -15,6 +18,10 @@ public class User implements Serializable {
 	private String id;
 	private String name;
 	private String email;
+	
+	//Referenciando Files p User - List (interface), ArrayList(implementação possível dessa List). lazy =so carrega os 'Files' se eu explicitamente acessar, se n, só User é carregado (n tem carregamento/fluxo desnecessário)
+	@DBRef(lazy=true)
+	private List<File> files = new ArrayList<>();	
 	
 	//Construtores
 	public User() {
@@ -52,6 +59,14 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
+	public List<File> getFiles() {
+		return files;
+	}
+	
+	public void setFiles(List<File> files) {
+		this.files = files;
+	}
+	
 	//hashCode e Equals
 	@Override
 	public int hashCode() {
@@ -76,5 +91,6 @@ public class User implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+
 }
