@@ -23,8 +23,12 @@ public class FileServices {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Arquivo não encontrado"));
 	}	
 	
+	//busca File por Title - query methos
+	//public List<File> findByTitle(String text) {
+		//return repo.findByTitleContainingIgnoreCase(text);
+	//}
 	//busca File por Title
 	public List<File> findByTitle(String text) {
-		return repo.findByTitleContainingIgnoreCase(text);
+		return repo.searchtitle(text);
 	}
 }
