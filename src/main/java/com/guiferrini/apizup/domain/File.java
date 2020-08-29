@@ -1,12 +1,15 @@
 package com.guiferrini.apizup.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.guiferrini.apizup.dto.AuthorDTO;
+import com.guiferrini.apizup.dto.CommentDTO;
 
 @Document 
 public class File implements Serializable {
@@ -19,6 +22,8 @@ public class File implements Serializable {
 	private String body;
 	private AuthorDTO author;
 	
+	private List<CommentDTO> comments = new ArrayList<>();
+
 	public File() {
 	}
 
@@ -71,6 +76,14 @@ public class File implements Serializable {
 		this.author = author;
 	}
 	
+	public List<CommentDTO> getComments() {
+		return comments;
+	}
+	
+	public void setComments(List<CommentDTO> comments) {
+		this.comments = comments;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -95,5 +108,4 @@ public class File implements Serializable {
 			return false;
 		return true;
 	}
-
 }
