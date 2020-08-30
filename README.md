@@ -1,4 +1,4 @@
-###ConnectedIn
+#ConnectedIn
 
 ##Sobre
 
@@ -17,12 +17,15 @@ Para as empresas a ideia é disponibilizar ofertas de trabalho. Fornecer descri�
 Dentro do documento (tanto da empresa como do profissional) é possível criar comentários. Gerar interação entre as partes.
 
 ##A API está na versão 1.0 - Agosto/2020. 
+
 Criada em linguagem Java e o framework Spring Boot.
+
 Banco de dados: Mongodb.
 
 ##Seguem as principais operações do serviço (CRUD) já disponíveis na versão 1.0.
 
-#User - Conta
+###User - Conta
+
 Retorna todos Usuários
 GET - http://localhost:8080/users
 
@@ -41,7 +44,7 @@ PUT {id} - http://localhost:8080/users/id
 Retorna o Usuário com id buscado e todos documentos (Files) criado por ele
 GET {id}/files - http://localhost:8080/users/id/files	
 
-#File – Arquivos criado pelo Usuário
+###File – Arquivos criado pelo Usuário
 
 Retorna os documentos criados por um Usuário pelo Id dele
 GET {id} - http://localhost:8080/files/id
@@ -52,5 +55,5 @@ GET {/serachtitle} - http://localhost:8080/files/serchtitle
 Cria um novo documento, File, com o ID do Usuário que criou.
 POST {User_ID} - http://localhost:8080/files/id
 
-##Conteudo Desenvolvido por Guilherme Ferrini - 2020.
+#Conteudo Desenvolvido por Guilherme Ferrini - 2020.
  
