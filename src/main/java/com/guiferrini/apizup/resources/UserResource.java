@@ -67,7 +67,7 @@ public class UserResource {
 	    return ResponseEntity.noContent().build(); //retorna cod 204
 	}
 	
-	//método p retornar Files de um User
+	//método p retornar Files de um User por ID
 	@RequestMapping(value="/{id}/files", method=RequestMethod.GET)
 	public ResponseEntity<List<File>> findFiles(@PathVariable String id) { //variavél id como parametro
 		User obj = service.findById(id);

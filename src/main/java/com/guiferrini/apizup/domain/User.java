@@ -8,8 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-//p informar q User corresponde uma coleção no MongoDB
-@Document(collection="user")
+@Document(collection="user") //p informar q User corresponde uma coleção no MongoDB
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

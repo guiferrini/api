@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.guiferrini.apizup.dto.AuthorDTO;
 import com.guiferrini.apizup.dto.CommentDTO;
 
-@Document 
+@Document //p informar q File corresponde uma coleção no MongoDB
 public class File implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

@@ -5,7 +5,6 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.guiferrini.apizup.domain.File;
-//import com.guiferrini.apizup.dto.AuthorDTO;
 
 public class FileDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,7 +19,7 @@ public class FileDTO implements Serializable {
 	public FileDTO() {
 	}
 	
-	// copiando os dados do File p o DTO - instanciando a partir do Entitiy
+	// copiando os dados do File p o DTO - instanciando a partir do Entity
 	public FileDTO(File obj) {
 		id = obj.getId();
 		date = obj.getDate();

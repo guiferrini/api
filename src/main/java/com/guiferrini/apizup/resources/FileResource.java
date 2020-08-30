@@ -28,7 +28,7 @@ public class FileResource {
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<File> findById(@PathVariable String id) { //variavél id como parametro
 		File obj = service.findById(id);
-		return ResponseEntity.ok().body(obj); //retorna objeto convertido p UserDTO	
+		return ResponseEntity.ok().body(obj); 
 	}	
 	
 	//método p retornar busca por title em File - decodificado (URL)
@@ -39,13 +39,10 @@ public class FileResource {
 		return ResponseEntity.ok().body(list); //retorna objeto decodificado
 	}
 	
-	//tenho p passar User.id e criar o File dentro desse User...
-	//id - por Author
-	
-	//cria File
+	//Método p criar File
 	@RequestMapping(value="/{id}", method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody FileDTO objDTO, @PathVariable String id) {
-		File obj = service.fromDTO(objDTO); //convertendo DTO p User
+		File obj = service.fromDTO(objDTO); //convertendo DTO p File
 		obj.setId(id); //garantir q meu obj vai ter ID da requisição
 		obj = service.insert(obj); //inserido no BD
 	    return ResponseEntity.noContent().build(); //retorna cod 204
