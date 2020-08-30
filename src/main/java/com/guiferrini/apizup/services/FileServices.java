@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.guiferrini.apizup.domain.File;
+import com.guiferrini.apizup.dto.FileDTO;
+//import com.guiferrini.apizup.dto.FileDTO;
 import com.guiferrini.apizup.repository.FileRepository;
 import com.guiferrini.apizup.services.exception.ObjectNotFoundException;
 
@@ -27,8 +29,17 @@ public class FileServices {
 	//public List<File> findByTitle(String text) {
 		//return repo.findByTitleContainingIgnoreCase(text);
 	//}
-	//busca File por Title
+	//busca File por Title - @Query
 	public List<File> findByTitle(String text) {
 		return repo.searchtitle(text);
+	}
+	
+	//Criando File
+	public File insert(File obj) {
+		return repo.insert(obj);
+	}
+	
+	public File fromDTO(FileDTO objDTO) {
+		return new File(objDTO.getId(), objDTO.getDate(), objDTO.getTitle(), objDTO.getBody(), objDTO.getAuthor());
 	}
 }

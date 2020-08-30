@@ -65,7 +65,7 @@ public class Instantiation implements CommandLineRunner { //carga inicial do BD
 				new AuthorDTO(ned)
 				);
 
-		//Instanciando Comments
+		//Instanciando Commentarios, já com autor
 		CommentDTO c1 = new CommentDTO(
 				"Inscrito! Bora codar :)", 
 				sdf.parse("29/08/2020"), 

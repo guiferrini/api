@@ -40,7 +40,7 @@ public class UserServices {
 		repo.deleteById(id);
 	}
 	
-	//Atualizando User
+	//Atualizando User, localizando User por ID
 	public User update(User obj) { //dados do User enviados na Requisição, n tem ligação ainda com BD
 		//p atualizar, busco objeto original no BD (por ID)- altero com os dados enviados (requisição)- e ai salva on BD
 		User newObj = findById(obj.getId()); 

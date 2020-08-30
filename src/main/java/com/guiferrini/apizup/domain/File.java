@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.guiferrini.apizup.dto.AuthorDTO;
 import com.guiferrini.apizup.dto.CommentDTO;
 
@@ -17,6 +18,7 @@ public class File implements Serializable {
 	
 	@Id
 	private String id; 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "Brazil/East")
 	private Date date;
 	private String title;
 	private String body;

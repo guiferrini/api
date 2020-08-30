@@ -11,10 +11,10 @@ import com.guiferrini.apizup.domain.File;
 @Repository
 public interface FileRepository extends MongoRepository<File, String> { //tipo da classe de dominio, tipo do id da classe
 
-	//método de busca personalizado pelo campo title, expressão regular sera o paramatro(text), i-sensitiveCase
+	//método de busca personalizado (@Query) pelo campo title, expressão regular sera o paramatro(text), i-sensitiveCase
 	@Query("{ 'title': { $regex: ?0, $options: 'i'} }")
 	List<File> searchtitle(String text);
 	
 	//incluindo médoto de busca por title em File - query methods
-	List<File> findByTitleContainingIgnoreCase(String text);	
+	//List<File> findByTitleContainingIgnoreCase(String text);	
 }
